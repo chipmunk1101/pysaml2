@@ -257,6 +257,9 @@ class AttributeValueBase(SamlBase):
             ] if ':' not in xsd_string
             else xsd_string.split(':', 1))
 
+        if type(value) == unicode:
+            value = str(value)
+
         xsd_type_props = xsd_types_props.get(xsd_type, {})
         valid_type = xsd_type_props.get('type', type(None))
         to_type = xsd_type_props.get('to_type', str)
